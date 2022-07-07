@@ -1,8 +1,14 @@
 package com.division.file;
 
+import com.division.data.ChestData;
+
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 public interface ChestDao {
 
-    void init(); //콘피그 액세스전 초기화 작업등 구현. load 메소드 사용시 작동
+    Map<UUID, List<ChestData>> load(); //데이터 로드
 
-
+    void save(Map<UUID, List<ChestData>> data); //데이터 저장
 }
