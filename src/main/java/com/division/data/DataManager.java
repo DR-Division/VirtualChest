@@ -14,4 +14,8 @@ public class DataManager {
         this.dao = dataObject;
     }
 
+    public void init() {
+        dao.init();
+    }
+
 }
