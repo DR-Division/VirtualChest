@@ -1,0 +1,11 @@
+name: VirtualChest
+version: '${project.version}'
+main: com.division.VirtualChest
+api-version: 1.16
+authors: [ Reincarnation__ ]
+
+commands:
+  virtualchest:
+    description: about virtual chest
+    aliases:
+      - 창고
