@@ -98,7 +98,7 @@ public class ChestCommand implements CommandExecutor, TabCompleter {
                         if (!manager.isLoaded())
                             p.sendMessage("현재 데이터 로드중입니다..");
                         else if (args.length >= 2) {
-                            Player target = Bukkit.getPlayer(args[2]);
+                            Player target = Bukkit.getPlayer(args[1]);
                             if (target != null) {
                                 if (!manager.hasData(target.getUniqueId()))
                                     manager.addData(target.getUniqueId(), new ArrayList<>());
