@@ -1,5 +1,6 @@
 package com.division;
 
+import com.division.api.VirtualChestAPI;
 import com.division.command.ChestCommand;
 import com.division.data.DataManager;
 import com.division.file.ChestDao;
@@ -22,6 +23,7 @@ public final class VirtualChest extends JavaPlugin {
         ConfigDao dao = new ConfigDao(getDataFolder().getAbsolutePath());
         dao.init();
         manager.setDataAccessObject(dao);
+        VirtualChestAPI.injectDependency(manager);
         ChestCommand command = new ChestCommand(manager, this);
         Objects.requireNonNull(getCommand("virtualchest")).setExecutor(command);
         Objects.requireNonNull(getCommand("virtualchest")).setTabCompleter(command);
