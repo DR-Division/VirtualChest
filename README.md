@@ -27,7 +27,7 @@
 <br/>    플러그인 활성화 후 3초뒤에 설정된 dao객체로부터 데이터를 불러옵니다.
 
 <br/>  · interface ChestDao
-<br/>    Map<UUID, List<Inventory>> load() : 데이터를 불러오는 메소드입니다. UUID에 플레이어, List<Inventory>에는 가상창고 1번부터 해당되는 데이터들이 있습니다.
-<br/>    void save(Map<UUID, List<Inventory>) : 데이터를 저장하는 메소드입니다.
+<br/>    Map<UUID, List〈Inventory〉> load() : 데이터를 불러오는 메소드입니다. UUID에 플레이어, List<Inventory>에는 가상창고 1번부터 해당되는 데이터들이 있습니다.
+<br/>    void save(Map<UUID, List〈Inventory〉) : 데이터를 저장하는 메소드입니다.
 
 기본적인 구현 예시는 ConfigDao 객체를 참조하시면 되겠습니다.
