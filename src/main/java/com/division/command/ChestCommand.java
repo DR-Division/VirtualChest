@@ -64,17 +64,17 @@ public class ChestCommand implements CommandExecutor, TabCompleter {
                     case "크기조절":
                         if (!manager.isLoaded())
                             p.sendMessage("현재 데이터 로드중입니다..");
-                        else if (args.length >= 4 && ChestUtil.parseInt(args[3]) != -1 && ChestUtil.parseInt(args[4]) != -1) {
-                            int index = ChestUtil.parseInt(args[3]);
-                            int row = ChestUtil.parseInt(args[4]);
-                            Player target = Bukkit.getPlayer(args[2]);
+                        else if (args.length >= 4 && ChestUtil.parseInt(args[2]) != -1 && ChestUtil.parseInt(args[3]) != -1) {
+                            int index = ChestUtil.parseInt(args[2]);
+                            int row = ChestUtil.parseInt(args[3]);
+                            Player target = Bukkit.getPlayer(args[1]);
                             if (index > 0 && row > 0 && row < 7 && target != null && manager.hasData(target.getUniqueId())) {
                                 List<Inventory> inventories = manager.getData(target.getUniqueId());
                                 if (inventories.size() > index) {
                                     Inventory inventory = inventories.get(index);
                                     int pastSize = inventory.getSize();
                                     inventories.set(index, ChestUtil.createInventory(row, inventory));
-                                    p.sendMessage("크기가 조절되었습니다. 대상 : §b" + args[2] + " §f크기 : " + pastSize + " => " + args[4]);
+                                    p.sendMessage("크기가 조절되었습니다. 대상 : §b" + args[1] + " §f크기 : " + pastSize + " => " + args[3]);
                                 }
                             }
                         }

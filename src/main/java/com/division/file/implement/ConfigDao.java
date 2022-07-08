@@ -49,17 +49,17 @@ public class ConfigDao implements ChestDao {
                     inventoryMap.put(uuid, new ArrayList<>());
                     for (String id : chestSection.getKeys(false)) {
                         int row = config.getInt("chest." + key + "." + id + ".row", 1);
+                        Map<Integer, ItemStack> indexedMap = new HashMap<>();
                         ConfigurationSection indexSection = config.getConfigurationSection("chest." + key + "." + id + ".items"); //chest.#UUID.#CHEST.item
                         if (indexSection != null) {
-                            Map<Integer, ItemStack> indexedMap = new HashMap<>();
                             for (String index : indexSection.getKeys(false)) { //chest.uuid.id.item.1 -> item stack
                                 ItemStack stack = config.getItemStack("chest." + key + "." + id + ".items." + index);
                                 int parsedIndex = ChestUtil.parseInt(index);
                                 if (parsedIndex != -1 && stack != null)
                                     indexedMap.put(parsedIndex, stack);
                             }
-                            inventoryMap.get(uuid).add(ChestUtil.createInventory(row, indexedMap));
                         }
+                        inventoryMap.get(uuid).add(ChestUtil.createInventory(row, indexedMap));
                     }
                 }
             }
@@ -76,6 +76,7 @@ public class ConfigDao implements ChestDao {
                 config.set("chest." + uuid.toString() + "." + i + ".row", inventory.getSize() / 9);
                 for (int k = 0; k < inventory.getSize(); k++) {
                     config.set("chest." + uuid + "." + i + ".items." + k, inventory.getItem(k));
+
                 }
             }
         }
