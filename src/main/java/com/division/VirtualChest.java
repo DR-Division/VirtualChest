@@ -19,7 +19,8 @@ public final class VirtualChest extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         manager = new DataManager();
-        ChestDao dao = new ConfigDao(getDataFolder().getAbsolutePath());
+        ConfigDao dao = new ConfigDao(getDataFolder().getAbsolutePath());
+        dao.init();
         manager.setDataAccessObject(dao);
         ChestCommand command = new ChestCommand(manager, this);
         Objects.requireNonNull(getCommand("virtualchest")).setExecutor(command);

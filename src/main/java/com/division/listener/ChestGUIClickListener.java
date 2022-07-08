@@ -2,6 +2,7 @@ package com.division.listener;
 
 import com.division.data.DataManager;
 import com.division.util.ChestUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,9 +27,10 @@ public class ChestGUIClickListener implements Listener {
         ItemStack stack = event.getCurrentItem();
         int index = event.getRawSlot();
         List<MetadataValue> valueList = p.getMetadata("virtual_chest_id");
-        if (valueList.size() != 0 && valueList.get(0).toString() != null) {
-            String target = valueList.get(0).toString();
-            if (target != null && stack != null && stack.getType() == Material.CHEST) {
+        if (valueList.size() != 0 && valueList.get(0) != null && event.getView().getTitle().contains("창고 선택")) {
+            event.setCancelled(true);
+            String target = valueList.get(0).asString();
+            if (stack != null && stack.getType() == Material.CHEST) {
                 ChestUtil.openVirtualChest(manager, p, target, index);
             }
         }

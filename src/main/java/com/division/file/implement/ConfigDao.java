@@ -18,15 +18,15 @@ public class ConfigDao implements ChestDao {
     private YamlConfiguration config;
 
     public ConfigDao(String path) {
-        this.file = new File(path, "data.yml");
+        this.file = new File(path + "/data.yml");
         this.config = null;
 
     }
 
-    private boolean init() {
+    public boolean init() {
         if (!file.exists()) {
             try {
-                Files.createDirectories(file.toPath());
+                Files.createDirectories(file.getParentFile().toPath());
                 return file.createNewFile();
             }
             catch (IOException e) {
@@ -75,9 +75,15 @@ public class ConfigDao implements ChestDao {
                 Inventory inventory = inventories.get(i);
                 config.set("chest." + uuid.toString() + "." + i + ".row", inventory.getSize());
                 for (int k = 0; k < inventory.getSize(); k++) {
-                    config.set("chest" + uuid + "." + i + ".items." + k, inventory.getItem(k));
+                    config.set("chest." + uuid + "." + i + ".items." + k, inventory.getItem(k));
                 }
             }
+        }
+        try {
+            config.save(file);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
