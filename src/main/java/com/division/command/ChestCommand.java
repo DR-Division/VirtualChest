@@ -82,9 +82,9 @@ public class ChestCommand implements CommandExecutor, TabCompleter {
                     case "삭제":
                         if (!manager.isLoaded())
                             p.sendMessage("현재 데이터 로드중입니다..");
-                        else if (args.length >= 3 && ChestUtil.parseInt(args[3]) != -1) {
-                            int index = ChestUtil.parseInt(args[3]);
-                            Player target = Bukkit.getPlayer(args[2]);
+                        else if (args.length >= 3 && ChestUtil.parseInt(args[2]) != -1) {
+                            int index = ChestUtil.parseInt(args[2]);
+                            Player target = Bukkit.getPlayer(args[1]);
                             if (index > 0 && target != null && manager.hasData(target.getUniqueId())) {
                                 List<Inventory> inventories = manager.getData(target.getUniqueId());
                                 if (inventories.size() > index) {

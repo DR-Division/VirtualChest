@@ -25,8 +25,8 @@ public class DataManager {
     }
 
     public void load() {
-        isLoaded = true;
         dataMap = dao.load();
+        isLoaded = dataMap != null;
     }
 
     public void save() {
