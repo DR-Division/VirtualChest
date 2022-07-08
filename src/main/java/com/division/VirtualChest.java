@@ -2,6 +2,8 @@ package com.division;
 
 import com.division.command.ChestCommand;
 import com.division.data.DataManager;
+import com.division.file.ChestDao;
+import com.division.file.implement.ConfigDao;
 import com.division.listener.ChestGUIClickListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,6 +19,8 @@ public final class VirtualChest extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         manager = new DataManager();
+        ChestDao dao = new ConfigDao(getDataFolder().getAbsolutePath());
+        manager.setDataAccessObject(dao);
         ChestCommand command = new ChestCommand(manager, this);
         Objects.requireNonNull(getCommand("virtualchest")).setExecutor(command);
         Objects.requireNonNull(getCommand("virtualchest")).setTabCompleter(command);
