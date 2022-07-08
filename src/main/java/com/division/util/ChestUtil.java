@@ -62,7 +62,7 @@ public class ChestUtil {
         Player target = Bukkit.getPlayer(name);
         if (target != null) {
             List<Inventory> data = manager.getData(target.getUniqueId());
-            if (data.size() > index)
+            if (data != null && data.size() > index)
                 p.openInventory(data.get(index));
         }
     }
