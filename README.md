@@ -1,4 +1,4 @@
-# RouletteItem 
+# VirtualChest 
 #### 가상창고를 생성하고 관리할 수 있는 플러그인 입니다.
 ![2022-07-08_13 59 24](https://user-images.githubusercontent.com/61282478/177920299-124e252a-e93f-405c-90f4-06073dc2d9ad.png)
 
