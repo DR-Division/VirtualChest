@@ -128,7 +128,7 @@ public class ChestCommand implements CommandExecutor, TabCompleter {
     }
 
     private void openChest(Player p, String target) {
-        p.setMetadata("virtual_chest_id", new FixedMetadataValue(Plugin, p.getName())); //virtual_chest_uuid라는 메타데이터에 최종적으로 연 상대의 닉네임을 저장하여 창고 오픈시 사용
+        p.setMetadata("virtual_chest_id", new FixedMetadataValue(Plugin, target)); //virtual_chest_uuid라는 메타데이터에 최종적으로 연 상대의 닉네임을 저장하여 창고 오픈시 사용
         ChestUtil.openChestMenu(manager, p, target);
     }
 
