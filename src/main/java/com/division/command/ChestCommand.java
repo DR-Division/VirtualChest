@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ChestCommand implements CommandExecutor, TabCompleter {
 
-    List<String> tabCompleteList = Arrays.asList();
+    List<String> tabCompleteList = Arrays.asList("저장", "리로드", "열기", "활성화", "비활성화", "크기조절", "삭제", "추가");
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {

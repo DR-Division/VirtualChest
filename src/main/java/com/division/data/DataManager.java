@@ -20,7 +20,7 @@ public class DataManager {
         this.dataMap = null;
     }
 
-    public void setDataObject(ChestDao dataObject) {
+    public void setDataAccessObject(ChestDao dataObject) {
         this.dao = dataObject;
     }
 
@@ -52,6 +52,10 @@ public class DataManager {
 
     public List<Inventory> getData(UUID data) {
         return dataMap.get(data);
+    }
+
+    public void addData(UUID data, List<Inventory> inventories) {
+        dataMap.put(data, inventories);
     }
 
 }
