@@ -69,6 +69,7 @@ public class ConfigDao implements ChestDao {
 
     @Override
     public void save(Map<UUID, List<Inventory>> data) {
+        config.set("chest", null);
         for (UUID uuid : data.keySet()) {
             List<Inventory> inventories = data.get(uuid);
             for (int i = 0; i < inventories.size(); i++) {

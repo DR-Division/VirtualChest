@@ -65,14 +65,14 @@ public class ChestCommand implements CommandExecutor, TabCompleter {
                         if (!manager.isLoaded())
                             p.sendMessage("현재 데이터 로드중입니다..");
                         else if (args.length >= 4 && ChestUtil.parseInt(args[2]) != -1 && ChestUtil.parseInt(args[3]) != -1) {
-                            int index = ChestUtil.parseInt(args[2]);
+                            int index = ChestUtil.parseInt(args[2]) - 1;
                             int row = ChestUtil.parseInt(args[3]);
                             Player target = Bukkit.getPlayer(args[1]);
-                            if (index > 0 && row > 0 && row < 7 && target != null && manager.hasData(target.getUniqueId())) {
+                            if (index >= 0 && row > 0 && row < 7 && target != null && manager.hasData(target.getUniqueId())) {
                                 List<Inventory> inventories = manager.getData(target.getUniqueId());
                                 if (inventories.size() > index) {
                                     Inventory inventory = inventories.get(index);
-                                    int pastSize = inventory.getSize();
+                                    int pastSize = inventory.getSize() / 9;
                                     inventories.set(index, ChestUtil.createInventory(row, inventory));
                                     p.sendMessage("크기가 조절되었습니다. 대상 : §b" + args[1] + " §f크기 : " + pastSize + " => " + args[3]);
                                 }
@@ -83,9 +83,9 @@ public class ChestCommand implements CommandExecutor, TabCompleter {
                         if (!manager.isLoaded())
                             p.sendMessage("현재 데이터 로드중입니다..");
                         else if (args.length >= 3 && ChestUtil.parseInt(args[2]) != -1) {
-                            int index = ChestUtil.parseInt(args[2]);
+                            int index = ChestUtil.parseInt(args[2]) - 1;
                             Player target = Bukkit.getPlayer(args[1]);
-                            if (index > 0 && target != null && manager.hasData(target.getUniqueId())) {
+                            if (index >= 0 && target != null && manager.hasData(target.getUniqueId())) {
                                 List<Inventory> inventories = manager.getData(target.getUniqueId());
                                 if (inventories.size() > index) {
                                     inventories.remove(index);

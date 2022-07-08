@@ -10,6 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ChestUtil {
 
@@ -20,7 +21,7 @@ public class ChestUtil {
 
     public static Inventory createInventory(int row, Inventory from) {
         Inventory inventory = Bukkit.createInventory(null, 9 * row, "§0가상 창고");
-        inventory.addItem(from.getContents());
+        Arrays.stream(from.getContents()).filter(Objects::nonNull).forEach(inventory::addItem);
         return inventory;
     }
 
