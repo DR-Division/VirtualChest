@@ -73,7 +73,7 @@ public class ConfigDao implements ChestDao {
             List<Inventory> inventories = data.get(uuid);
             for (int i = 0; i < inventories.size(); i++) {
                 Inventory inventory = inventories.get(i);
-                config.set("chest." + uuid.toString() + "." + i + ".row", inventory.getSize());
+                config.set("chest." + uuid.toString() + "." + i + ".row", inventory.getSize() / 9);
                 for (int k = 0; k < inventory.getSize(); k++) {
                     config.set("chest." + uuid + "." + i + ".items." + k, inventory.getItem(k));
                 }
